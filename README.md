@@ -1,23 +1,51 @@
-# Calender-date-copier
-This is a tool that simplifies scheduling using a calendar. It's available as a Chrome extension.
+# Calendar Date Copier
 
-Title: Calendar Date Copier - Effortless Schedule Coordination
+Calendar Date Copierは、日程調整の候補日をカレンダーから選択し、メールやチャットに貼り付けやすい形式のテキストを自動生成するChrome拡張機能です。
 
-Overview: "Typing out dates, days of the week, and times manually every time I send an email to coordinate a meeting is so tedious!" Created out of this everyday frustration, Calendar Date Copier is a Chrome extension designed to drastically speed up your scheduling process. Simply click your available dates on a calendar, and perfectly formatted text is generated instantly.
+## 開発背景
 
-Key Features:
+日程調整を行う際、候補日、曜日、時間帯を毎回手入力することに手間を感じたため、カレンダー上で日付を選ぶだけで整形済みの候補日程を作成できるツールを開発しました。
 
-📅 Intuitive Calendar: Pick multiple available dates with a simple click.
-⏰ Flexible Time Slots: Set default times for all dates, and easily tweak specific times for individual days.
-🎨 Customizable Formats: Fully customize how your dates and times look (e.g., 4/25 (Wed) 16:00-20:00) using the intuitive visual format builder.
-📝 Header & Footer Text: Automatically wrap your dates with standard greetings or closing remarks.
-💾 Template System: Save your favorite configurations (e.g., "Business", "Casual") as templates for instant recall.
-📋 One-Click Copy: Send your perfectly formatted schedule to your clipboard with a single click.
-How to Use:
+## 主な機能
 
-Click the extension icon to open the popup.
-SETTINGS: Define your default start/end times, customize your date format using the visual builder, and add any prefix or suffix text.
-CALENDAR: Click on the dates you are available.
-SELECTED DATES: Fine-tune the specific times for any given date if necessary.
-COPY: Click the "Copy to clipboard" button at the bottom and paste the text directly into your email or chat!
-TEMPLATE: Once you have a setup you like, save it using the "Save as new template" feature for lightning-fast scheduling next time.
+| 機能 | 内容 |
+|---|---|
+| カレンダー選択 | カレンダー上で複数の候補日をクリックして選択できます。 |
+| 時間帯設定 | デフォルトの開始時刻・終了時刻を設定でき、日付ごとに個別変更もできます。 |
+| 出力形式の変更 | 縦並び・横並びの出力を切り替えられます。 |
+| 日付フォーマット設定 | `4/25(水) 16:00-20:00` のような形式をプリセットまたはカスタムで設定できます。 |
+| ヘッダー・フッター | 日程候補の前後に定型文を追加できます。 |
+| テンプレート保存 | よく使う設定をテンプレートとして保存し、次回以降すぐに呼び出せます。 |
+| クリップボードコピー | 生成した日程候補文をワンクリックでコピーできます。 |
+| 日本語・英語切り替え | 表示言語を日本語・英語で切り替えられます。 |
+
+## 使用技術
+
+| 領域 | 技術 |
+|---|---|
+| フロントエンド | HTML, CSS, JavaScript |
+| 拡張機能 | Chrome Extension Manifest V3 |
+| データ保存 | Chrome Storage API |
+
+## 工夫した点
+
+単に日付を選択するだけでなく、実際の日程調整メールやチャットでそのまま使いやすいように、出力形式、定型文、テンプレート保存を組み合わせて設計しました。特に、候補日を複数選んだ後に日付ごとの時間を変更できるようにしたことで、同じ日程調整の中でも柔軟に候補を提示できるようにしています。
+
+また、設定内容はChromeのローカルストレージに保存されるため、毎回同じ設定を入力し直す必要がありません。繰り返し発生する作業を減らすことを重視して実装しました。
+
+## 学んだこと
+
+この開発を通じて、Chrome拡張機能の基本構成、ブラウザ内でのデータ保存、ユーザー操作に応じた動的なUI更新を学びました。小さなツールであっても、利用場面を具体的に想定して設計することで、作業効率を大きく改善できると感じました。
+
+## 使い方
+
+1. このリポジトリをクローンします。
+
+```bash
+git clone https://github.com/motitea/Calendar-date-copier.git
+```
+
+2. Chromeで `chrome://extensions/` を開きます。
+3. 右上の「デベロッパーモード」を有効にします。
+4. 「パッケージ化されていない拡張機能を読み込む」から、このプロジェクトのフォルダを選択します。
+5. 拡張機能のアイコンをクリックして使用します。
