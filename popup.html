@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar Date Copier</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Calendar Date Copier</h1>
+    </header>
+
+    <section class="template-management">
+      <h2>TEMPLATE</h2>
+      <div class="template-controls">
+        <select id="template-select">
+          <option value="">-- Select --</option>
+        </select>
+        <button id="delete-template-btn" type="button">Remove</button>
+      </div>
+      <div class="restore-presets-container">
+        <button id="restore-presets-btn" type="button">Restore defaults</button>
+      </div>
+    </section>
+
+    <section class="settings-section">
+      <h2>SETTINGS</h2>
+      <div class="setting-item time-setting">
+        <span>Default time</span>
+        <div class="time-inputs">
+          <input type="time" id="default-start-time" value="17:00">
+          <span class="separator">-</span>
+          <input type="time" id="default-end-time" value="19:00">
+        </div>
+      </div>
+      <div class="setting-item">
+        <div class="setting-header">
+          <span>Date format</span>
+        </div>
+        <select id="date-format-preset">
+          <option value="preset1">4/25(水) 16:00-20:00</option>
+          <option value="preset2">4月25日(水) 16時00分〜20時00分</option>
+          <option value="custom">Custom...</option>
+        </select>
+        
+        <div id="custom-format-builder" class="custom-format-builder" style="display: none;">
+          <div class="fb-group">
+            <span class="fb-fixed">4</span><input type="text" id="fmt-m" class="fb-input" value="/">
+            <span class="fb-fixed">25</span><input type="text" id="fmt-d" class="fb-input" value="(">
+            <span class="fb-fixed">水</span><input type="text" id="fmt-w" class="fb-input" value=")">
+          </div>
+          <div class="fb-group">
+            <span class="fb-fixed" style="margin-right:4px;">Space</span>
+            <select id="fmt-sp" class="fb-select">
+              <option value=" ">[Space]</option>
+              <option value="">[None]</option>
+            </select>
+          </div>
+          <div class="fb-group">
+            <span class="fb-fixed">16</span><input type="text" id="fmt-sh" class="fb-input" value=":">
+            <span class="fb-fixed">00</span><input type="text" id="fmt-sm" class="fb-input" value="-">
+            <span class="fb-fixed">20</span><input type="text" id="fmt-eh" class="fb-input" value=":">
+            <span class="fb-fixed">00</span><input type="text" id="fmt-em" class="fb-input" value="">
+          </div>
+        </div>
+      </div>
+      <div class="setting-item">
+        <span>Header text</span>
+        <textarea id="prefix-text" class="template-textarea" placeholder="Text before dates"></textarea>
+      </div>
+      <div class="setting-item">
+        <span>Footer text</span>
+        <textarea id="suffix-text" class="template-textarea" placeholder="Text after dates"></textarea>
+      </div>
+
+      <div class="save-template-form">
+        <span>Save as new template</span>
+        <div class="save-template-inputs">
+          <input type="text" id="new-template-name" placeholder="Template name" maxlength="50">
+          <button id="save-template-btn" type="button">Save</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="language-section">
+      <h2>LANGUAGE</h2>
+      <div class="radio-group">
+        <label><input type="radio" name="lang" value="ja" checked><span>JP</span></label>
+        <label><input type="radio" name="lang" value="en"><span>EN</span></label>
+      </div>
+    </section>
+
+    <section class="calendar-section">
+      <div class="calendar-header">
+        <button id="prev-month" type="button" aria-label="Previous month">&lsaquo;</button>
+        <div id="month-year-selectors">
+          <select id="select-year" aria-label="Year"></select>
+          <select id="select-month" aria-label="Month"></select>
+        </div>
+        <button id="next-month" type="button" aria-label="Next month">&rsaquo;</button>
+      </div>
+      <div id="calendar-weekdays" class="calendar-grid"></div>
+      <div id="calendar-days" class="calendar-grid"></div>
+    </section>
+
+    <section class="selected-dates-section">
+      <div class="section-header">
+        <h2>SELECTED DATES</h2>
+        <button id="clear-all-btn" type="button">Clear all</button>
+      </div>
+      <ul id="selected-dates-list">
+        <li class="empty-message">No dates selected</li>
+      </ul>
+    </section>
+
+    <section class="format-section">
+      <h2>FORMAT</h2>
+      <div class="radio-group">
+        <label><input type="radio" name="format" value="vertical" checked><span>Vertical</span></label>
+        <label><input type="radio" name="format" value="horizontal"><span>Horizontal</span></label>
+      </div>
+      <textarea id="output-text" readonly placeholder="Output preview"></textarea>
+    </section>
+
+    <button id="copy-btn" type="button">Copy to clipboard</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
